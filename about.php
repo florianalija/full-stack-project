@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +20,23 @@
         <a class="act" href="about.php">About</a>
         <a href="product.php">Product</a>
         <a href="contact.php">Contact</a>
-        <a class="login" href="register.php">Log in/Register</a>
+        <?php
+          if (isset($_SESSION["userId"])){
+            #if($_SESSION['role'] == '1'){
+            if($_SESSION['userUid'] == 'Admin'){
+                echo '<a href="dashboard.php">Dashboard</a>';
+            }
+          } 
+        
+        ?>
+        <?php
+          if (isset($_SESSION["userId"])) {
+              echo '<a href="businessLogic/logout.php">Logout</a>';
+          }
+          else{
+            echo '<a class="login" href="register.php">Log in/Register</a>';
+          }
+          ?>
       </div>
 
  </header>
@@ -35,7 +54,7 @@
               <p class="title">CEO & Founder</p>
               <p>Some text that describes me lorem ipsum ipsum lorem.</p>
               <p>jane@example.com</p>
-              <p><button class="button">Contact</button></p>
+              <p><button class="button"><a href="contact.php" style="text-decoration: none; color: white;">Contact</a></button></p>
             </div>
           </div>
         </div>
@@ -48,7 +67,7 @@
               <p class="title">Art Director</p>
               <p>Some text that describes me lorem ipsum ipsum lorem.</p>
               <p>mike@example.com</p>
-              <p><button class="button">Contact</button></p>
+              <p><button class="button"><a href="contact.php" style="text-decoration: none; color: white;">Contact</a></button></p>
             </div>
           </div>
         </div>
@@ -61,7 +80,7 @@
               <p class="title">Designer</p>
               <p>Some text that describes me lorem ipsum ipsum lorem.</p>
               <p>john@example.com</p>
-              <p><button class="button">Contact</button></p>
+              <p><button class="button"><a href="contact.php" style="text-decoration: none; color: white;">Contact</a></button></p>
             </div>
           </div>
         </div>

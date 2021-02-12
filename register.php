@@ -19,7 +19,23 @@
         <a href="about.php">About</a>
         <a href="product.php">Product</a>
         <a href="contact.php">Contact</a>
-        <a class="login" href="register.php">Log in/Register</a>
+        <?php
+          if (isset($_SESSION["userId"])){
+            #if($_SESSION['role'] == '1'){
+            if($_SESSION['userUid'] == 'Admin'){
+                echo '<a href="dashboard.php">Dashboard</a>';
+            }
+          } 
+        
+        ?>
+        <?php
+          if (isset($_SESSION["userId"])) {
+              echo '<a href="businessLogic/logout.php">Logout</a>';
+          }
+          else{
+            echo '<a class="login" href="register.php">Log in/Register</a>';
+          }
+          ?>
       </div>
 
  </header>

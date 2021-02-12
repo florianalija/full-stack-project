@@ -21,11 +21,13 @@
         <a href="product.php">Product</a>
         <a href="contact.php">Contact</a>
         <?php
-          if (isset($_SESSION["roleUsers"]) && $_SESSION['roleUsers'] == '1') {
-        ?>
-        <a href="dashboard.php">Dashboard</a>
-        <?php
-          }
+          if (isset($_SESSION["userId"])){
+            #if($_SESSION['role'] == '1'){
+            if($_SESSION['userUid'] == 'Admin'){
+                echo '<a href="dashboard.php">Dashboard</a>';
+            }
+          } 
+        
         ?>
         <?php
           if (isset($_SESSION["userId"])) {
