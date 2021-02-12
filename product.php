@@ -11,7 +11,7 @@
 <body>
 
  <header>
-    <img class="llogo" src="lampbrand-llogo2.png" alt="">
+    <a href="index.php"><img class="llogo" src="lampbrand-llogo2.png" alt=""></a>
     <div class="topnav">
         <a href="index.php">Home</a>
         <a href="about.php">About</a>
@@ -72,13 +72,6 @@
 
  </section>
 
- <footer>
-    <div class="footer-cont">
-        <div class="footer-left"><p>All rights reserved Tange 2020</P></div>
-
-  <div class="footer-right"> <label for="subscribe">Subscribe to newsletter</label>
-       <input type="text" id="subscribe" name="lastname" placeholder="Enter your email.."></div>
-    </div>
- </footer>
-</body>
-</html>
+ <?php
+  include 'components/footer.php';
+ ?>

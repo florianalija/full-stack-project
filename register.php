@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +13,7 @@
 <body>
 
  <header>
-    <img class="llogo" src="lampbrand-llogo2.png" alt="">
+    <a href="index.php"><img class="llogo" src="lampbrand-llogo2.png" alt=""></a>
     <div class="topnav">
         <a href="index.php">Home</a>
         <a href="about.php">About</a>
@@ -32,17 +33,22 @@
                     <button type="button" class="toggle-btn" onclick="login()">Login</button>
                     <button type="button" class="toggle-btn" onclick="register()">Register</button>
                 </div>
-                <form id="login" class="input-group">
-                    <input type="text" class="input-field" placeholder="Username">
-                    <input type="password" class="input-field" placeholder="Password">
-                    <button type="submit" class="submit-btn" onclick="validate(0)">Login</button>
-                </form>
-                <form id="register" class="input-group">
-                    <input type="text" class="input-field" placeholder="Username" >
-                    <input type="text" class="input-field" placeholder="Email" >
-                    <input type="password" class="input-field" placeholder="Password" >
-                    <button type="submit" class="submit-btn" onclick="validate(1)">Register</button>
-                </form>
+                <div class="login forms form-style">
+                    <form id="login" class="input-group" action="businessLogic/login.php" method="POST">
+                        <input type="text" class="input-field" name="username" placeholder="Username">
+                        <input type="password" class="input-field" name="password" placeholder="Password">
+                        <button type="submit" class="submit-btn" name="login-btn" onclick="validate(0)">Login</button>
+                    </form>
+                </div>
+                <div class="register forms hidden">
+                    <form id="register" class="input-group" action="businessLogic/signup.php" method="POST">
+                        <input type="text" class="input-field" name="register-username" placeholder="Username" >
+                        <input type="text" class="input-field" name="register-email" placeholder="Email" >
+                        <input type="password" class="input-field" name="register-password" placeholder="Password" >
+                        <input type="password" class="input-field" name="register-password-repeat" placeholder="Confirm Password" >
+                        <button type="submit" class="submit-btn" name="register-btn" onclick="validate(1)">Register</button>
+                    </form>
+                </div>
             </div>
             
             <div class="graph-register" style="margin-top: 205px; margin-left: 101px;">
@@ -62,14 +68,6 @@
             </div>
     </section>
 
-    <footer>
-        <div class="footer-cont">
-            <div class="footer-left"><p>All rights reserved Tange 2020</P></div>
-    
-      <div class="footer-right"> <label for="subscribe">Subscribe to newsletter</label>
-           <input type="text" id="subscribe" name="lastname" placeholder="Enter your email.."></div>
-        </div>
-     </footer>
-<script src="js/main.js"></script>
-</body>
-</html>
+<?php
+  include 'components/footer.php';
+?>

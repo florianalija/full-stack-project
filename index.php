@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,13 +14,27 @@
 <body>
 
  <header>
-    <img class="llogo" src="lampbrand-llogo2.png" alt="">
+    <a href="index.php"><img class="llogo" src="lampbrand-llogo2.png" alt=""></a>
     <div class="topnav">
         <a class="act" href="index.php">Home</a>
         <a href="about.php">About</a>
         <a href="product.php">Product</a>
         <a href="contact.php">Contact</a>
-        <a class="login" href="register.php">Log in/Register</a>
+        <?php
+          if (isset($_SESSION["roleUsers"]) && $_SESSION['roleUsers'] == '1') {
+        ?>
+        <a href="dashboard.php">Dashboard</a>
+        <?php
+          }
+        ?>
+        <?php
+          if (isset($_SESSION["userId"])) {
+              echo '<a href="businessLogic/logout.php">Logout</a>';
+          }
+          else{
+            echo '<a class="login" href="register.php">Log in/Register</a>';
+          }
+          ?>
       </div>
 
  </header>
@@ -29,7 +46,7 @@
            <div class="con-right">
                 <h1>Browse out unique Lamp</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing el </p>
-                <button class="bttn">View More</button>
+                <button class="bttn"><a href="product.php" style="text-decoration: none; color: white;">View More</a></button>
 
             </div>
             
@@ -55,7 +72,7 @@
       <!-- <div class="cont-int"> -->
         <h2 class="cont-h2"> Great Lamps  </h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel dolorem accusamus temporibus, minima consequatur facilis? Nisi dicta animi ut eos, ab beatae saepe, nostrum mollitia laborum deserunt, ratione dolorum doloribus?</p>
-        <button class="bttn">Learn More</button>
+        <button class="bttn"><a href="about.php" style="text-decoration: none; color: white;">Learn More</a></button>
       </div>
     </div>
     <br>
@@ -71,9 +88,9 @@
     
         <label for="country">Country</label>
         <select id="country" name="country">
-          <option value="kosove">Kosove</option>
-          <option value="shqiperi">Shqiperi</option>
-          <option value="maqedoni">Maqedoni e Veriut</option>
+          <option value="australia">Kosove</option>
+          <option value="canada">Shqiperi</option>
+          <option value="usa">Maqedoni e Veriut</option>
         </select>
     
         <label for="subject">Subject</label>
@@ -88,15 +105,6 @@
 </content>
 
 
- <footer>
-     <div class="footer-cont">
-         <div class="footer-left"><p>All rights reserved Tange 2020</P></div>
-
-   <div class="footer-right"> <label for="subscribe">Subscribe to newsletter</label>
-        <input type="text" id="subscribe" name="lastname" placeholder="Enter your email.."></div>
-     </div>
-
- </footer>
-     <script src="js/main.js"></script>
-</body>
-</html>
+ <?php
+  include 'components/footer.php';
+ ?>
