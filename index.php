@@ -79,25 +79,37 @@
         <h2 style="margin-left:49px;">Contact Form</h2>
 
     <div class="cont-contact" style="width: 1018px;margin-left: 50px;">
-      <form action="/action_page.php">
+    <form method="post">
         <label for="fname">First Name</label>
         <input type="text" id="fname" name="firstname" placeholder="Your name..">
     
-        <label for="lname">Last Name</label>
-        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+        <label for="lname">Email</label>
+        <input type="text" id="lname" name="email" placeholder="Your email..">
     
         <label for="country">Country</label>
         <select id="country" name="country">
-          <option value="australia">Kosove</option>
-          <option value="canada">Shqiperi</option>
-          <option value="usa">Maqedoni e Veriut</option>
+          <option value="kosove">Kosove</option>
+          <option value="shqiperi">Shqiperi</option>
+          <option value="maqedoni">Maqedoni e Veriut</option>
         </select>
     
         <label for="subject">Subject</label>
         <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
     
-        <input type="submit" value="Submit">
+        <input type="submit" name="submit" value="Submit">
       </form>
+      <?php
+        if(isset($_POST['submit'])){
+          include_once 'businessLogic/function.php';
+          $obj = new Contact();
+          $res=$obj->contact($_POST);
+          if($res==true){
+            echo "<script>alert('Query successfuly submitted. Thank you')</script>";
+          }else{
+            echo "<script>alert('Something went wrong!')</script>";
+          }
+        }
+      ?>
     </div>  
     <br>
    
