@@ -1,4 +1,5 @@
 <?php
+  #$_SESSION['userUid']="Admin"
   session_start();
 ?>
 <!DOCTYPE html>
@@ -41,9 +42,104 @@
 
  </header>
 
- <section>
+ <section id="login-register">
     <h2 style="text-align:center">Our Top Products</h2>
+    <div class="card">
+          <?php
+          
+            include_once 'businessLogic/databaseConfig.php';
+            $sql = "SELECT * FROM gallery ORDER BY orderGallery DESC";
+            $stmt = mysqli_stmt_init($conn);
+            if(!mysqli_stmt_prepare($stmt, $sql)){
+              echo "SQL statement failed";
+            } else {
+              mysqli_stmt_execute($stmt);
+              $result = mysqli_stmt_get_result($stmt);
 
+              while($row = mysqli_fetch_assoc($result)){
+                echo '<br>
+                  <a href="#" style="text-decoration: none; color:black; margin: auto; padding: inherit;">
+                  <div style="background-image: url(images/'.$row["imgFullNameGallery"].'); margin-right: 200px; margin-top: 100px; margin-bottom: 0px;"></div>
+                  <h1>'.$row["titleGallery"].'</h1>
+                  <p>'.$row["descGallery"].'</p>
+                  <p>Lorem jeamsun denim lorem jeansum.</p>
+                  <p><button>Add to Cart</button></p>
+                </a>';
+              }
+            }
+
+            
+          ?>
+        </div>
+
+
+        <!--<div class="card">
+        <a href="#" style="text-decoration: none; color: black;">
+            <div></div>
+            <h1>Lorem ipsum</h1>
+            <p></p>
+            <p>$112.99</p>
+            <p><button>Add to Cart</button></p>
+          </a>
+        </div>
+        <div class="card">
+        <a href="#" style="text-decoration: none; color: black;">
+            <div></div>
+            <h1>Lorem ipsum</h1>
+            <p></p>
+            <p>$112.99</p>
+            <p><button>Add to Cart</button></p>
+          </a>
+        </div>
+        <div class="card">
+        <a href="#" style="text-decoration: none; color: black;">
+            <div></div>
+            <h1>Lorem ipsum</h1>
+            <p></p>
+            <p>$112.99</p>
+            <p><button>Add to Cart</button></p>
+          </a>
+        </div>
+        <div class="card">
+        <a href="#" style="text-decoration: none; color: black;">
+            <div></div>
+            <h1>Lorem ipsum</h1>
+            <p></p>
+            <p>$112.99</p>
+            <p><button>Add to Cart</button></p>
+          </a>
+        </div>
+        <div class="card">
+          <a href="#" style="text-decoration: none; color: black;">
+            <div></div>
+            <h1>Lorem ipsum</h1>
+            <p></p>
+            <p>$112.99</p>
+            <p><button>Add to Cart</button></p>
+          </a>
+        </div>
+        -->
+
+
+      <?php
+      if(isset($_SESSION['userId'])){
+        if($_SESSION['userUid'] == 'Admin'){
+          echo  '
+          <div class="form-box">
+            <form id="register" class="input-group" action="businessLogic/gallery-upload.php" method="POST" enctype="multipart/form-data">
+            <input type="text" class="input-field" name="filename" placeholder="File name.." >
+            <input type="text" class="input-field" name="filetitle" placeholder="Image title.." >
+            <input type="text" class="input-field" name="filedesc" placeholder="Image description..." >
+            <input type="file" class="input-field" name="file">
+            <button type="submit" class="submit-btn" name="submit">Upload</button>
+            </form>
+          </div>
+        ';
+        }
+      }
+     
+      ?>
+    <!--
     <div class="card">
       <img src="css/lamp1.jpg" alt="Denim Jeans" style="width:100%">
       <h1>Lorem ipsum</h1>
@@ -88,7 +184,8 @@
           <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
           <p><button>Add to Cart</button></p>
         </div> <br><br><br><br>
-
+        -->
+        </div>
  </section>
 
  <?php
