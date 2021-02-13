@@ -82,20 +82,20 @@
 
     <div class="cont-contact" style="width: 1018px;margin-left: 50px;">
     <form method="post">
-        <label for="fname">First Name</label>
+        <!--<label for="fname">First Name</label>-->
         <input type="text" id="fname" name="firstname" placeholder="Your name..">
     
-        <label for="lname">Email</label>
+        <!--<label for="lname">Email</label>-->
         <input type="text" id="lname" name="email" placeholder="Your email..">
     
-        <label for="country">Country</label>
+        <!--<label for="country">Country</label>-->
         <select id="country" name="country">
           <option value="kosove">Kosove</option>
           <option value="shqiperi">Shqiperi</option>
           <option value="maqedoni">Maqedoni e Veriut</option>
         </select>
     
-        <label for="subject">Subject</label>
+        <!--<label for="subject">Subject</label>-->
         <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
     
         <input type="submit" name="submit" value="Submit">
